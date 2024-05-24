@@ -2,10 +2,12 @@ import 'package:cimax_films_app/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+
 class SeperatedCategory extends StatelessWidget {
-  const SeperatedCategory({super.key, required this.category});
+  const SeperatedCategory({super.key, required this.category, required this.gapBetweenContent});
 
   final String category;
+  final double gapBetweenContent;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -51,7 +53,7 @@ class SeperatedCategory extends StatelessWidget {
                     5.h,
                   ),
                 );
-              },scrollDirection: Axis.horizontal, separatorBuilder: (BuildContext context, int index) { return const Gap(10); }, itemCount: 10,),
+              },scrollDirection: Axis.horizontal, separatorBuilder: (BuildContext context, int index) { return  Gap(gapBetweenContent); }, itemCount: 10,),
             ),
           )
         ],

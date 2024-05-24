@@ -1,5 +1,5 @@
+import 'package:cimax_films_app/core/app_export.dart';
 import 'package:flutter/material.dart';
-import '../core/app_export.dart';
 
 String _appTheme = "lightCode";
 LightCodeColors get appTheme => ThemeHelper().themeColor();

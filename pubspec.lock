@@ -25,14 +25,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  bottom_bar_matu:
-    dependency: "direct main"
-    description:
-      name: bottom_bar_matu
-      sha256: "1566e067210380b543db1a548499e57d39dd8f5ceb9eaa878d036f82d886353e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.5.0"
   cached_network_image:
     dependency: "direct main"
     description:
@@ -421,6 +413,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sliding_clipped_nav_bar:
+    dependency: "direct main"
+    description:
+      name: sliding_clipped_nav_bar
+      sha256: f43ba9856d25515faa012f4f3763080f8a93fa6edf11a3c3ca358b8982de6411
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
   source_span:
     dependency: transitive
     description:

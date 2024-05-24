@@ -1,66 +1,68 @@
-import 'package:bottom_bar_matu/bottom_bar_matu.dart';
 import 'package:cimax_films_app/controller/home_screen_main_controller.dart';
-import 'package:cimax_films_app/screens/home_screen/widgets/appbar_section.dart';
-import 'package:cimax_films_app/screens/home_screen/widgets/category_builder.dart';
-import 'package:cimax_films_app/screens/home_screen/widgets/seperated_categories.dart';
-import 'package:cimax_films_app/screens/home_screen/widgets/slider_widget.dart';
+import 'package:cimax_films_app/screens/home_screen/home_screen.dart';
+import 'package:cimax_films_app/screens/home_screen/profile_page.dart';
+import 'package:cimax_films_app/screens/home_screen/upcoming_show_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 import '../../core/app_export.dart';
+import '../../utils/theme/theme_helper.dart';
 
 class MainHomeScreen extends StatelessWidget {
   const MainHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<HomeScreenMainController>(context,listen: false).initPageController();
     return Consumer<HomeScreenMainController>(
       builder: (BuildContext context, HomeScreenMainController value,
           Widget? child) {
       return  Scaffold(
           extendBody: false,
-          bottomNavigationBar: BottomBarBubble(
-            bubbleSize: 15,
-            color: Colors.black,
-            items: [
-              BottomBarItem(iconData: Icons.home_outlined),
-              BottomBarItem(iconData: Icons.movie_filter_outlined),
-              BottomBarItem(iconData: Icons.live_tv_rounded),
-              BottomBarItem(iconData: Icons.calendar_month),
-              BottomBarItem(iconData: Icons.person_2_outlined),
+          bottomNavigationBar: SlidingClippedNavBar(
+            backgroundColor: Colors.white,
+            inactiveColor: Colors.black,
+            onButtonPressed: (index) {
+            Provider.of<HomeScreenMainController>(context,listen: false).changePageIndex(index);
+              // controller.animateToPage(selectedIndex,
+              //     duration: const Duration(milliseconds: 400),
+              //     curve: Curves.easeOutQuad);
+            },
+            iconSize: 20,
+            activeColor: Colors.amber,
+            selectedIndex: value.pageIndex,
+            barItems: [
+              BarItem(
+                icon: CupertinoIcons.home,
+                title: 'Home',
+              ),
+              BarItem(
+                icon: Icons.movie_creation_outlined,
+                title: 'Movies',
+              ), BarItem(
+                icon: CupertinoIcons.calendar,
+                title: 'Upcoming',
+              ), BarItem(
+                icon: CupertinoIcons.person,
+                title: 'Profile',
+              ),
+              /// Add more BarItem if you want
             ],
-            // onSelect: value.changePageIndex,
           ),
           backgroundColor: appTheme.whiteA700,
-          body: SingleChildScrollView(
-            child: Container(
-              width: double.maxFinite,
-              decoration: AppDecoration.fillWhiteA,
-              child: Column(
-                children: [
-                  /// Top section Widget
-                  SizedBox(height: 70.v),
-                  const RowClapperboard(),
+          body:PageView(
+            controller: value.pageController,
+            onPageChanged:(index) {
+              Provider.of<HomeScreenMainController>(context,listen: false).changePageIndex(index);
 
-                  /// Poster Carousal Widget
-                  SizedBox(height: 13.v),
-                  const SliderWidget(),
-
-                  /// Category button section
-                  SizedBox(height: 23.v),
-                  const CategoryBuilder(),
-
-                  /// Tending Section
-                  SizedBox(height: 22.v),
-                  const SeperatedCategory(
-                    category: 'Trending',
-                  ),
-                  SizedBox(height: 14.v),
-                  const SeperatedCategory(category: 'Popular'),
-                  SizedBox(height: 14.v),
-                  const SeperatedCategory(category: 'Latest'),
-                ],
-              ),
-            ),
+            } ,
+            children: const [
+              HomeScreen(),
+              HomeScreen(),
+              UpComingShows(),
+              ProfilePage(),
+            ],
           ),
         );
       },

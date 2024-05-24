@@ -17,7 +17,8 @@ dependencies:
   connectivity_plus: ^6.0.3
   cached_network_image: ^3.3.1
   flutter_svg: ^2.0.10+1
-  bottom_bar_matu: ^1.5.0
+  sliding_clipped_nav_bar: ^3.1.1
+
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'package:cimax_films_app/core/app_export.dart';
 import 'package:cimax_films_app/widgets/custom_submit_button.dart';
 import 'package:flutter/material.dart';
 
+
 class CategoryBuilder extends StatelessWidget {
   const CategoryBuilder({super.key});
 
