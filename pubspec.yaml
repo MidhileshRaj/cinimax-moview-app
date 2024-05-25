@@ -18,6 +18,9 @@ dependencies:
   cached_network_image: ^3.3.1
   flutter_svg: ^2.0.10+1
   sliding_clipped_nav_bar: ^3.1.1
+  firebase_core: ^2.31.1
+  cloud_firestore: ^4.17.4
+  firebase_auth: ^4.19.6
 
 
 dev_dependencies:

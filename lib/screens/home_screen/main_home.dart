@@ -61,7 +61,7 @@ class MainHomeScreen extends StatelessWidget {
               HomeScreen(),
               HomeScreen(),
               UpComingShows(),
-              ProfilePage(),
+              ProfilePage(name: "",),
             ],
           ),
         );
